@@ -2,18 +2,25 @@ dist: bionic
 jobs:
   include:
   - name: Kong CE 2.3.2
-    env: KONG_VERSION=2.3.2
+    env: 
+      - KONG_VERSION=2.3.2
+      - LUA="luajit=2.1.0-beta3"
+before_install:
+  - pip install hererocks
+  - hererocks . --$LUA -rlatest
+  - source ./bin/activate
+  - luarocks install dkjson
 install:
 - git clone --single-branch https://github.com/Kong/kong-pongo ../kong-pongo
 - "../kong-pongo/pongo.sh up"
 - "../kong-pongo/pongo.sh build"
 script:
-- "../kong-pongo/pongo.sh lint"
+# - "../kong-pongo/pongo.sh lint"
 - "../kong-pongo/pongo.sh run"
 deploy:
   - provider: script
     skip_cleanup: true
-    script: luarocks upload kong-plugin-url-rewrite-*.rockspec --api-key=$LUAROCKS_API_KEY
+    script: luarocks upload kong-plugin-mm-rate-limiting-*.rockspec --api-key=$LUAROCKS_API_KEY
     on:
       branch: main
 notifications:
