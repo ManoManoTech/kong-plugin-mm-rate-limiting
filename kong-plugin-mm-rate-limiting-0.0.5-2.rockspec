@@ -1,11 +1,11 @@
 package = "kong-plugin-mm-rate-limiting"
-version = "0.0.5-1"
+version = "0.0.5-2"
 
 local pluginName = package:match("^kong%-plugin%-(.+)$")  -- "mm-rate-limiting"
 
 supported_platforms = {"linux", "macosx"}
 source = {
-  url = "https://git.manomano.tech/core-utils/kong-rate-limiting",
+  url = "https://github.com/ManoManoTech/kong-plugin-mm-rate-limiting",
   tag = "v0.0.5"
 }
 
