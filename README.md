@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/ManoManoTech/kong-plugin-mm-rate-limiting.svg?branch=main)](https://travis-ci.com/ManoManoTech/kong-plugin-mm-rate-limiting)
 # A Kong plugin to allow, deny and rate limit the queries by ip, header or user agent
 
 The goal is to protect the origin, that's why there is only local policy compared to the [rate limiting plugin](https://docs.konghq.com/hub/kong-inc/rate-limiting/) where there is 2 other policies for precision but with performance impact.
